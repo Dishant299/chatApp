@@ -2,8 +2,6 @@ import express from 'express';
 import 'dotenv/config';
 import cors from 'cors';
 import http from 'http';
-import { connect } from 'http2';
-import { mongo } from 'mongoose';
 import { connectDB } from './lib/db.js';
 import userRouter from './routes/user.js';
 import messageRouter from './routes/messageRoute.js';
@@ -47,14 +45,11 @@ app.use('/api/auth',userRouter);
 app.use('/api/messages',messageRouter);
 
 
+const PORT = process.env.PORT || 4000;
 
 // connect mongodb
 await connectDB();
 
-if(process.env.NODE_ENV !== "production") {
-    const PORT = process.env.PORT || 4000;
-    server.listen(PORT, () => console.log('server is running on PORT: ' + PORT)); 
-}
+server.listen(PORT, () => console.log('server is running on PORT: ' + PORT)); 
 
-// Export server for Vercel
-export default server;
+
