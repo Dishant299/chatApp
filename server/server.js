@@ -37,7 +37,13 @@ io.on('connection',(socket) => {
 
 //middleware
 app.use(express.json({limit:"4mb"}));
-app.use(cors());
+app.use(cors({
+       origin: [
+           "http://localhost:5173",
+           "chat-app-nu-liard-23.vercel.app",
+    ],
+    credentials: true,
+  }));
 
 //route
 app.use('/api/status', (req,res) => res.send('server is live'));
