@@ -40,7 +40,7 @@ app.use(express.json({limit:"4mb"}));
 app.use(cors({
        origin: [
            "http://localhost:5173",
-           "chat-app-nu-liard-23.vercel.app",
+           "https://chat-app-nu-liard-23.vercel.app",
     ],
     credentials: true,
   }));
