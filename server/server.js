@@ -41,6 +41,7 @@ app.use(cors({
        origin: [
            "http://localhost:5173",
            "https://chat-app-nu-liard-23.vercel.app",
+           "https://chat-app-dishant3.vercel.app",
     ],
     credentials: true,
   }));
@@ -57,5 +58,4 @@ const PORT = process.env.PORT || 4000;
 await connectDB();
 
 server.listen(PORT, () => console.log('server is running on PORT: ' + PORT)); 
-
 
