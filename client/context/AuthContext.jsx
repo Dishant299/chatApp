@@ -12,7 +12,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({children}) => {
     const navigate = useNavigate();
 
-    const [loading, setLoading] = useState(() => Boolean(localStorage.getItem("token")));
+    const [loading, setLoading] = useState(true);
     const [token,setToken] = useState(localStorage.getItem("token"));
     const [authUser,setAuthUser] = useState(null); 
     const [onlineUsers,setOnlineUsers] = useState([]); 
@@ -98,9 +98,9 @@ export const AuthProvider = ({children}) => {
     }
 
     useEffect(() => {
-        if (!token) return;
-
-        axios.defaults.headers.common["token"] = token;
+        if(token){
+            axios.defaults.headers.common["token"] = token;
+        }
         checkAuth();
     },[])
 
